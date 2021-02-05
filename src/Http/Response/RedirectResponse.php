@@ -4,16 +4,16 @@ declare(strict_types=1);
 
 namespace Light\Http\Response;
 
-class JsonResponse implements Response
+class RedirectResponse implements Response
 {
     public function __construct(
-        private array $data = []
-    )
-    {
+        private string $redirectTo = ''
+    ) {
+
     }
 
     public function handle()
     {
-        echo json_encode($this->data);
+        header('Location: ' . $this->redirectTo);
     }
 }

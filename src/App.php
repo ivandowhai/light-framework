@@ -34,7 +34,7 @@ class App
         ));
         assert($response instanceof Response);
 
-        echo $response->draw();
+        $response->handle();
     }
 
     private function getData() : array

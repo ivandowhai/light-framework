@@ -19,12 +19,12 @@ class HtmlResponse implements Response
         }
     }
 
-    public function draw()
+    public function handle()
     {
         $data = $this->data;
         ob_start();
         require_once $this->template;
-        return ob_get_clean();
+        echo ob_get_clean();
     }
 
     public function getTemplate(): ?string
