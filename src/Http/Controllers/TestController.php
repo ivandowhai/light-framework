@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\Http\Controllers;
+namespace Light\Http\Controllers;
 
-use App\Http\ {
+use Light\Http\ {
     Controller,
     Response\HtmlResponse,
     Response\Response,

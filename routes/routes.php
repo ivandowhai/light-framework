@@ -1,11 +1,11 @@
 <?php
 
-use App\Http\Routing\Route;
+use Light\Http\Routing\Route;
 
 return [
     new Route(
-        'test/{id}',
-        App\Http\Controllers\TestController::class,
+        'test',
+        Light\Http\Controllers\TestController::class,
         Route::GET
     )
 ];

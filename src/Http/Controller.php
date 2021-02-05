@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http;
+namespace Light\Http;
 
-use App\Http\Response\Response;
+use Light\Http\Response\Response;
 
 interface Controller
 {

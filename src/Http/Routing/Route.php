@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\Http\Routing;
+namespace Light\Http\Routing;
 
-use App\Http\RouteException;
+use Light\Http\RouteException;
 
 class Route
 {

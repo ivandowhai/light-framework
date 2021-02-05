@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\Http\Routing;
+namespace Light\Http\Routing;
 
-use App\Config\Config;
+use Light\Config\Config;
 
 class Router
 {

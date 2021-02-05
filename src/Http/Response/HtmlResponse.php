@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\Http\Response;
+namespace Light\Http\Response;
 
-use App\Config\Config;
+use Light\Config\Config;
 
 class HtmlResponse implements Response
 {
