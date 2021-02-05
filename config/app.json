@@ -1,0 +1,4 @@
+{
+    "routesPath": "/routes/routes.php",
+    "testTemplate": "/templates/default.php"
+}
