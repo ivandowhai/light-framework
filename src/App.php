@@ -25,7 +25,10 @@ class App
         $route = $this->router->parse();
 
         $controller = $route->getController();
-        $controller = new $controller();
+
+        $dependencies = $this->autoloadDependencies($controller);
+
+        $controller = new $controller(...$dependencies);
         assert($controller instanceof Controller);
 
         $response = $controller->handle(new Request(
@@ -43,5 +46,20 @@ class App
             fn ($parameter) => addslashes($parameter),
             array_merge($_GET, $_POST)
         );
+    }
+
+    private function autoloadDependencies(string $class): array
+    {
+        $reflection = new \ReflectionClass($class);
+        $dependencyObjects = [];
+        if ($reflection->hasMethod('__construct')) {
+            $parameters = $reflection->getMethod('__construct')->getParameters();
+            foreach ($parameters as $parameter) {
+                $dependencyClass = $parameter->getType()->getName();
+                $dependencies = $this->autoloadDependencies($dependencyClass);
+                $dependencyObjects[] = new $dependencyClass(...$dependencies);
+            }
+        }
+       return $dependencyObjects;
     }
 }
