@@ -19,4 +19,12 @@ spl_autoload_register(function ($class) {
 
 use Light\App;
 
-(new App())->handleRequest();
+try {
+    (new App())->handleRequest();
+} catch (\Exception $exception) {
+    echo $exception->getMessage()
+        . ' File: '
+        . $exception->getFile()
+        . ' line: '
+        . $exception->getLine();
+}

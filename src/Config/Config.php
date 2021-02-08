@@ -16,7 +16,10 @@ class Config
         unset($files[0], $files[1]);
         foreach ($files as $file) {
             $key = substr($file, 0, strpos($file, '.'));
-            $this->data[$key] = json_decode(file_get_contents(PROJECT_PATH . '/config/' . $file), true);
+            $this->data[$key] = json_decode(
+                file_get_contents(PROJECT_PATH . '/config/' . $file),
+                true
+            );
         }
     }
 

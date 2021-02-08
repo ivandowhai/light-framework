@@ -51,6 +51,10 @@ class Router
         $method = $_SERVER['REQUEST_METHOD'];
         $uriArray = $this->getUriArray($_SERVER['REQUEST_URI']);
 
+        if (empty($uriArray)) {
+            $uriArray = [''];
+        }
+
         foreach ($this->routes as $route) {
             assert($route instanceof Route);
             $routeArray = explode('/', $route->getRoute());
