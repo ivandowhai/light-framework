@@ -1,18 +1,24 @@
 {
-  "name": "ivandowhai/light-framework",
-  "description": "description",
-  "minimum-stability": "stable",
-  "license": "proprietary",
-  "authors": [
-    {
-      "name": "Ivan Dovhai",
-      "email": "troopermanowar@gmail.com"
-    }
-  ],
-  "require": {
-    "php": "^8.0"
-  },
+    "name": "ivandowhai/light-framework",
+    "description": "description",
+    "minimum-stability": "stable",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "Ivan Dovhai",
+            "email": "troopermanowar@gmail.com"
+        }
+    ],
+    "require": {
+        "php": "^8.0"
+    },
     "autoload": {
-        "Light\\": "src"
+        "psr-4": {
+            "Light\\": "src",
+            "Tests\\": "tests"
+        }
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.5"
     }
 }

@@ -4,12 +4,11 @@ declare(strict_types=1);
 
 namespace Light;
 
-use Light\Http\ {
-    Controller,
+use Light\Http\{Controller,
     Request,
     Response\Response,
-    Routing\Router
-};
+    Routing\Router,
+    Routing\RouterFactory};
 
 class App
 {
@@ -17,7 +16,7 @@ class App
 
     public function __construct()
     {
-        $this->router = new Router();
+        $this->router = RouterFactory::makeRouter();
     }
 
     public function handleRequest()

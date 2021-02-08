@@ -8,12 +8,8 @@ use Light\Config\Config;
 
 class Router
 {
-    private $routes;
-
-    public function __construct()
+    public function __construct(private array $routes)
     {
-        $this->routes = require_once PROJECT_PATH
-            . Config::getInstance()->get('app', 'routesPath');
     }
 
     public function parse() : Route
