@@ -18,9 +18,10 @@ spl_autoload_register(function ($class) {
 });
 
 use Light\App;
+use Light\Http\Routing\RouterFactory;
 
 try {
-    (new App())->handleRequest();
+    (new App(RouterFactory::makeRouter()))->handleRequest();
 } catch (\Exception $exception) {
     echo $exception->getMessage()
         . ' File: '

@@ -4,22 +4,23 @@ declare(strict_types=1);
 
 namespace Light;
 
-use Light\Http\{Controller,
+use Light\Http\ {
+    Controller,
     Request,
     Response\Response,
-    Routing\Router,
-    Routing\RouterFactory};
+    Routing\Router
+};
 
 class App
 {
-    private $router;
 
-    public function __construct()
+    public const PROJECT_PATH = __DIR__ . DIRECTORY_SEPARATOR . '..';
+
+    public function __construct(private Router $router)
     {
-        $this->router = RouterFactory::makeRouter();
     }
 
-    public function handleRequest()
+    public function handleRequest() : void
     {
         $route = $this->router->parse();
 
@@ -39,6 +40,9 @@ class App
         $response->handle();
     }
 
+    /**
+     * @return mixed[]
+     */
     private function getData() : array
     {
         return array_map(
@@ -47,6 +51,12 @@ class App
         );
     }
 
+    /**
+     * @param  string  $class
+     *
+     * @return object[]
+     * @throws \ReflectionException
+     */
     private function autoloadDependencies(string $class): array
     {
         $reflection = new \ReflectionClass($class);
@@ -54,7 +64,10 @@ class App
         if ($reflection->hasMethod('__construct')) {
             $parameters = $reflection->getMethod('__construct')->getParameters();
             foreach ($parameters as $parameter) {
-                $dependencyClass = $parameter->getType()->getName();
+                $reflectionType = $parameter->getType();
+                assert($reflectionType instanceof \ReflectionType);
+                /** @phpstan-ignore-next-line */
+                $dependencyClass = $reflectionType->getName();
                 $dependencies = $this->autoloadDependencies($dependencyClass);
                 $dependencyObjects[] = new $dependencyClass(...$dependencies);
             }

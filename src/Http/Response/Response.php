@@ -6,5 +6,5 @@ namespace Light\Http\Response;
 
 interface Response
 {
-    public function handle();
+    public function handle() : void;
 }

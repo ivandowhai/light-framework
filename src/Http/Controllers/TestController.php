@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Light\Http\Controllers;
 
+use Light\App;
+
 use Light\Http\ {
     Controller,
     Response\HtmlResponse,
@@ -17,7 +19,7 @@ class TestController implements Controller
     {
         return new HtmlResponse(
             array_merge($request->getParameters(), $request->getData()),
-            PROJECT_PATH . '/templates/default.php'
+            App::PROJECT_PATH . '/templates/default.php'
         );
     }
 }

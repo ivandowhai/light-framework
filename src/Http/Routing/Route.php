@@ -13,6 +13,7 @@ class Route
     public const PUT = 'PUT';
     public const DELETE = 'DELETE';
 
+    /** @var string[] */
     private array $parameters = [];
 
     public function __construct(
@@ -36,11 +37,17 @@ class Route
         return $this->controller;
     }
 
+    /**
+     * @return string[]
+     */
     public function getParameters(): array
     {
         return $this->parameters;
     }
 
+    /**
+     * @param  string[]  $parameters
+     */
     public function setParameters(array $parameters): void
     {
         $this->parameters = $parameters;

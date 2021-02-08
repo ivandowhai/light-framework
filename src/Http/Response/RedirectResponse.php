@@ -12,7 +12,7 @@ class RedirectResponse implements Response
 
     }
 
-    public function handle()
+    public function handle() : void
     {
         header('Location: ' . $this->redirectTo);
     }

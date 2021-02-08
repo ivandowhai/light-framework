@@ -8,6 +8,11 @@ use Light\Config\Config;
 
 class Router
 {
+    /**
+     * Router constructor.
+     *
+     * @param  Route[]  $routes
+     */
     public function __construct(private array $routes)
     {
     }
@@ -24,7 +29,12 @@ class Router
         return $route;
     }
 
-    private function getUriArray($uri) : array
+    /**
+     * @param  string  $uri
+     *
+     * @return string[]
+     */
+    private function getUriArray(string $uri) : array
     {
         $uriArray = array_filter(
             explode('/', $uri),
