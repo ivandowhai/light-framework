@@ -7,13 +7,12 @@ namespace Light\Http\Controllers;
 use Light\App;
 
 use Light\Http\ {
-    Controller,
     Response\HtmlResponse,
     Response\Response,
     Request
 };
 
-class TestController implements Controller
+class TestController extends BaseController
 {
     public function handle(Request $request): Response
     {
