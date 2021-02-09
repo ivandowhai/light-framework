@@ -17,15 +17,21 @@ spl_autoload_register(function ($class) {
         . '.php';
 });
 
-use Light\App;
-use Light\Http\Routing\RouterFactory;
+use Light\ {
+    App,
+    Http\Routing\RouterFactory,
+    Logger\LoggerFactory
+};
 
 try {
     (new App(RouterFactory::makeRouter()))->handleRequest();
 } catch (\Exception $exception) {
-    echo $exception->getMessage()
+    $message = $exception->getMessage()
         . ' File: '
         . $exception->getFile()
         . ' line: '
         . $exception->getLine();
+
+    echo $message;
+    LoggerFactory::getDefaultLogger()->error($message);
 }

@@ -1,4 +1,5 @@
 {
     "routesPath": "/routes/routes.php",
-    "testTemplate": "/templates/default.php"
+    "testTemplate": "/templates/default.php",
+    "defaultLogger": "text"
 }

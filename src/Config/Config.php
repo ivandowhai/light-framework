@@ -8,7 +8,7 @@ use Light\App;
 
 class Config
 {
-    private static ?self $instance;
+    private static ?self $instance = null;
 
     /** @var mixed[] */
     private array $data = [];
