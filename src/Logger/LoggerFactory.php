@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Light\Logger;
 
-use Light\Logger\TextLogger;
 use Light\Config\Config;
 use Psr\Log\LoggerInterface;
 

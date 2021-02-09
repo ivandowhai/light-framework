@@ -11,42 +11,52 @@ use Light\Http\ {
     Routing\Router
 };
 
+use Light\Logger\LoggerFactory;
+
 class App
 {
 
-    public const PROJECT_PATH = __DIR__ . DIRECTORY_SEPARATOR . '..';
+    public const PROJECT_PATH = __DIR__.DIRECTORY_SEPARATOR.'..';
 
     public function __construct(private Router $router)
     {
     }
 
-    public function handleRequest() : void
+    public function handleRequest(): void
     {
-        $route = $this->router->parse();
+        try {
+            $route = $this->router->parse();
 
-        $controller = $route->getController();
+            $controller = $route->getController();
 
-        $dependencies = $this->autoloadDependencies($controller);
+            $dependencies = $this->autoloadDependencies($controller);
 
-        $controller = new $controller(...$dependencies);
-        assert($controller instanceof Controller);
+            $controller = new $controller(...$dependencies);
+            assert($controller instanceof Controller);
 
-        $response = $controller->handle(new Request(
-            $route->getParameters(),
-            $this->getData()
-        ));
-        assert($response instanceof Response);
+            $response = $controller->handle(new Request(
+                $route->getParameters(),
+                $this->getData()
+            ));
+            assert($response instanceof Response);
 
-        $response->handle();
+            $response->handle();
+        } catch (\Exception $exception) {
+            $message = $this->formatErrorMessage($exception);
+
+            echo $message;
+            LoggerFactory::getDefaultLogger()->error($message);
+        }
+
     }
 
     /**
      * @return mixed[]
      */
-    private function getData() : array
+    private function getData(): array
     {
         return array_map(
-            fn ($parameter) => addslashes($parameter),
+            fn($parameter) => addslashes($parameter),
             array_merge($_GET, $_POST)
         );
     }
@@ -62,7 +72,8 @@ class App
         $reflection = new \ReflectionClass($class);
         $dependencyObjects = [];
         if ($reflection->hasMethod('__construct')) {
-            $parameters = $reflection->getMethod('__construct')->getParameters();
+            $parameters = $reflection->getMethod('__construct')
+                ->getParameters();
             foreach ($parameters as $parameter) {
                 $reflectionType = $parameter->getType();
                 assert($reflectionType instanceof \ReflectionType);
@@ -72,6 +83,21 @@ class App
                 $dependencyObjects[] = new $dependencyClass(...$dependencies);
             }
         }
-       return $dependencyObjects;
+
+        return $dependencyObjects;
+    }
+
+    /**
+     * @param  \Exception  $exception
+     *
+     * @return string
+     */
+    private function formatErrorMessage(\Exception $exception): string
+    {
+        return $exception->getMessage()
+            .' File: '
+            .$exception->getFile()
+            .' line: '
+            .$exception->getLine();
     }
 }
