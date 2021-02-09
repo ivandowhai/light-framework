@@ -17,5 +17,6 @@ jobs:
     - name: Composer intall
       run: composer install
     - name: phpstan
-      run: vendor/bin/phpstan analyse src -l 6 
-
+      run: vendor/bin/phpstan analyse src -l 6
+    - name: PHPUnit
+      run: php vendor/bin/phpunit tests
