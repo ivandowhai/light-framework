@@ -6,6 +6,7 @@ namespace Light\Validation;
 
 class Validator
 {
+    /** @var string[][] */
     private array $errors = [];
 
     /**
