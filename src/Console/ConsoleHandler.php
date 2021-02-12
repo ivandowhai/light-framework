@@ -10,6 +10,11 @@ class ConsoleHandler
     {
     }
 
+    /**
+     * @param  string[]  $inputs
+     *
+     * @throws ConsoleException
+     */
     public function run(array $inputs) : void
     {
         if (count($inputs) < 2) {

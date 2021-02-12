@@ -6,6 +6,7 @@ namespace Light\Console;
 
 class Registry
 {
+    /** @var string[]  */
     private array $commands = [];
 
     /**

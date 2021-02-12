@@ -6,7 +6,10 @@ namespace Light\Console;
 
 class TestCommand
 {
-    public function __invoke(...$arguments)
+    /**
+     * @param  mixed  ...$arguments
+     */
+    public function __invoke(...$arguments) : void
     {
         print_r($arguments);
     }
