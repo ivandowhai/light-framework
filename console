@@ -1,0 +1,25 @@
+#!/usr/bin/env php
+<?php
+
+require_once __DIR__ . '/vendor/autoload.php';
+require_once __DIR__ . '/src/Autoloader.php';
+
+use Light\ {
+    Autoloader,
+    Console\Registry,
+    Console\ConsoleHandler
+};
+
+spl_autoload_register(new Autoloader());
+
+$registry = new Registry();
+
+$defaultCommands = require_once __DIR__ . '/commands.php';
+
+foreach ($defaultCommands as $name => $class) {
+    $registry->addCommand($name, $class);
+}
+
+$commandHandler = new ConsoleHandler($registry);
+
+$commandHandler->run($argv);
