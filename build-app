@@ -1,0 +1,27 @@
+#!/usr/bin/env php
+<?php
+
+$workDir = __DIR__ 
+    . DIRECTORY_SEPARATOR . '..'
+    . DIRECTORY_SEPARATOR . '..'
+    . DIRECTORY_SEPARATOR . '..'
+    . DIRECTORY_SEPARATOR
+;
+
+
+array_map(fn ($dir) => mkdir($dir), ['App', 'routes', 'config', 'templates']);
+
+array_map(
+    fn ($file) => copy(__DIR__ . DIRECTORY_SEPARATOR . $file, $workDir . $file),
+    [
+        'index.php',
+        'commands.php',
+        'console',
+        'routes' . DIRECTORY_SEPARATOR . 'routes.php',
+        'templates' . DIRECTORY_SEPARATOR . 'default.php',
+        'config' . DIRECTORY_SEPARATOR . 'app.json',
+    ]
+);
+
+
+
