@@ -23,7 +23,7 @@ class HtmlResponse implements Response
     )
     {
         if (null === $this->template) {
-            $this->template = App::PROJECT_PATH
+            $this->template = App::getProjectPath()
                 . Config::getInstance()->get('app', 'testTemplate');
         }
     }

@@ -15,9 +15,6 @@ use Light\Logger\LoggerFactory;
 
 class App
 {
-
-    public const PROJECT_PATH = __DIR__.DIRECTORY_SEPARATOR.'..';
-
     public function __construct(private Router $router)
     {
     }

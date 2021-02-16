@@ -18,7 +18,7 @@ class TestController extends BaseController
     {
         return new HtmlResponse(
             array_merge($request->getParameters(), $request->getData()),
-            App::PROJECT_PATH . '/templates/default.php'
+            App::getProjectPath() . '/templates/default.php'
         );
     }
 }

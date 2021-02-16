@@ -15,14 +15,14 @@ class Config
 
     private function __construct()
     {
-        $files = scandir(App::PROJECT_PATH . '/config');
+        $files = scandir(App::getProjectPath() . '/config');
         assert(is_array($files));
 
         unset($files[0], $files[1]);
         foreach ($files as $file) {
             $key = substr($file, 0, strpos($file, '.'));
             $this->data[$key] = json_decode(
-                file_get_contents(App::PROJECT_PATH . '/config/' . $file),
+                file_get_contents(App::getProjectPath() . '/config/' . $file),
                 true
             );
         }
