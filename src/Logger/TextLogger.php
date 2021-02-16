@@ -12,7 +12,7 @@ class TextLogger implements LoggerInterface
     public function log($level, $message, array $context = array())
     {
         file_put_contents(
-            App::PROJECT_PATH . '/log/' . $level . '-' . date('Y-m-d') . '.log',
+            App::getProjectPath() . '/log/' . $level . '-' . date('Y-m-d') . '.log',
             $message
         );
     }

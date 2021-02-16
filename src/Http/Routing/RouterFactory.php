@@ -13,7 +13,7 @@ class RouterFactory
 {
     public static function makeRouter() : Router
     {
-        $routes = require_once App::PROJECT_PATH
+        $routes = require_once App::getProjectPath()
             . Config::getInstance()->get('app', 'routesPath');
         return new Router($routes);
     }
