@@ -1,8 +1,8 @@
 {
     "name": "ivandowhai/light-framework",
-    "description": "description",
+    "description": "A simple PHP framework",
     "minimum-stability": "stable",
-    "license": "proprietary",
+    "license": "MIT",
     "authors": [
         {
             "name": "Ivan Dovhai",
