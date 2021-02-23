@@ -1,7 +1,11 @@
 <?php
 
-use Light\Console\TestCommand;
+use Light\Console\ {
+    CreateController,
+    TestCommand
+};
 
 return [
-    'test' => TestCommand::class
+    'test' => TestCommand::class,
+    'create-controller' => CreateController::class
 ];
