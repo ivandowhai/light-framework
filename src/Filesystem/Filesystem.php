@@ -53,6 +53,10 @@ class Filesystem
         file_put_contents($path, $content);
     }
 
+    /**
+     * @param string $path
+     * @return string[]
+     */
     public function getFiles(string $path) : array
     {
         $files = scandir($this->getPathInProject($path));
