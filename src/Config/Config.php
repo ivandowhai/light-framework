@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Light\Config;
 
 use Light\App;
+use Light\Filesystem\Filesystem;
 
 class Config
 {
@@ -13,16 +14,15 @@ class Config
     /** @var mixed[] */
     private array $data = [];
 
-    private function __construct()
+    private function __construct(private Filesystem $filesystem)
     {
-        $files = scandir(App::getProjectPath() . '/config');
-        assert(is_array($files));
+        $files = $filesystem->getFiles('config');
 
         unset($files[0], $files[1]);
         foreach ($files as $file) {
             $key = substr($file, 0, strpos($file, '.'));
             $this->data[$key] = json_decode(
-                file_get_contents(App::getProjectPath() . '/config/' . $file),
+                $filesystem->getContent($this->filesystem->getPathInProject("config/$file")),
                 true
             );
         }
@@ -31,7 +31,7 @@ class Config
     public static function getInstance() : self
     {
         if (null === self::$instance) {
-            self::$instance = new self();
+            self::$instance = new self(new Filesystem());
         }
 
         return self::$instance;

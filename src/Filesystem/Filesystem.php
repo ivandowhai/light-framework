@@ -41,7 +41,7 @@ class Filesystem
     {
         $path = $this->clearPath($path);
         $content = file_get_contents($path);
-        if (!$path) {
+        if (!$content) {
             throw new FilesystemException("File $path not found.");
         }
 
@@ -51,5 +51,12 @@ class Filesystem
     public function createFile(string $path, string $content) : void
     {
         file_put_contents($path, $content);
+    }
+
+    public function getFiles(string $path) : array
+    {
+        $files = scandir($this->getPathInProject($path));
+        assert(is_array($files));
+        return $files;
     }
 }
