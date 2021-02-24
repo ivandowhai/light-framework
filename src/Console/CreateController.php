@@ -18,7 +18,7 @@ class CreateController
     }
 
     /**
-     * @param string[] ...$arguments
+     * @param string ...$arguments
      * @throws ConsoleException
      * @throws FilesystemException
      */
