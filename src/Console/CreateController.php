@@ -33,7 +33,6 @@ class CreateController
             throw new ConsoleException('Name is invalid.');
         }
 
-        // TODO: abstraction to works with file system, to check and create dirs, read and write files
         if (!$this->filesystem->isDirectoryExists($this->controllersDir)) {
             $this->filesystem->createDirectory($this->controllersDir);
         }
