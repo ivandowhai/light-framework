@@ -11,6 +11,6 @@ class TestCommand
      */
     public function __invoke(...$arguments) : void
     {
-        print_r($arguments);
+
     }
 }
