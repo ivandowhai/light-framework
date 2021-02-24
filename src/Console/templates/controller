@@ -10,8 +10,7 @@ use Light\Http\ {
 
 class $name extends BaseController
 {
-
-  public function handle(Request \$request): Response
+  public function handle(Request $request): Response
   {
 
   }

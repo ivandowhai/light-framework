@@ -22,6 +22,11 @@ class Filesystem
         return App::getProjectPath() . DIRECTORY_SEPARATOR . $this->clearPath($path);
     }
 
+    public function getPathInFramework(string $path) : string
+    {
+        return $this->clearPath(__DIR__ . '/../' . $path);
+    }
+
     public function isDirectoryExists(string $path) : bool
     {
         return dir($path) instanceof \Directory;

@@ -54,9 +54,13 @@ class CreateClass
             $this->filesystem->createDirectory($workDir);
         }
 
+        $content = $this->filesystem->getContent(
+            $this->filesystem->getPathInFramework("Console/templates/$type")
+        );
+        $content = str_replace('$name', $name, $content);
         $this->filesystem->createFile(
             $this->filesystem->clearPath("$workDir/$name.php"),
-            $this->filesystem->getContent("templates/$type")
+            $content
         );
     }
 }
