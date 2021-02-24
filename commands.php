@@ -1,11 +1,11 @@
 <?php
 
 use Light\Console\ {
-    CreateController,
+    CreateClass,
     TestCommand
 };
 
 return [
     'test' => TestCommand::class,
-    'create-controller' => CreateController::class
+    'create' => CreateClass::class
 ];

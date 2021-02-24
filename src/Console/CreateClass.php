@@ -9,8 +9,13 @@ use Light\Filesystem\ {
     FilesystemException
 };
 
-class CreateController
+class CreateClass
 {
+    private const TYPES = [
+        'controller' => 'App/Controllers',
+        'command' => 'App/Commands'
+    ];
+
     private string $controllersDir;
 
     public function __construct(private Filesystem $filesystem) {
@@ -25,21 +30,33 @@ class CreateController
     public function __invoke(...$arguments) : void
     {
         if (!isset($arguments[0])) {
+            throw new ConsoleException('Type is required.');
+        }
+
+        if (!isset($arguments[1])) {
             throw new ConsoleException('Name is required.');
         }
-        $name = $arguments[0];
+
+        $type = $arguments[0];
+        $name = $arguments[1];
+
+        if (!array_key_exists($type, self::TYPES)) {
+            throw new ConsoleException('Type is invalid.');
+        }
 
         if (!preg_match('/^[A-Za-z]+$/', $name)) {
             throw new ConsoleException('Name is invalid.');
         }
 
-        if (!$this->filesystem->isDirectoryExists($this->controllersDir)) {
-            $this->filesystem->createDirectory($this->controllersDir);
+        $workDir = self::TYPES[$type];
+
+        if (!$this->filesystem->isDirectoryExists($workDir)) {
+            $this->filesystem->createDirectory($workDir);
         }
 
         $this->filesystem->createFile(
-            $this->filesystem->clearPath("$this->controllersDir/$name.php"),
-            $this->filesystem->getContent('templates/controller')
+            $this->filesystem->clearPath("$workDir/$name.php"),
+            $this->filesystem->getContent("templates/$type")
         );
     }
 }

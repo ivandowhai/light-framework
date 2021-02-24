@@ -4,7 +4,7 @@ namespace Tests\Console;
 
 use Light\ {
     Console\ConsoleException,
-    Console\CreateController,
+    Console\CreateClass,
     Filesystem\Filesystem
 };
 
@@ -20,34 +20,57 @@ class CreateControllerTest extends TestCase
     }
 
     /**
-     * @covers CreateController::__invoke()
+     * @covers CreateClass::__invoke()
      */
     public function test__invokeNoArguments()
     {
-        $command = new CreateController($this->filesystem);
+        $command = new CreateClass($this->filesystem);
         $this->expectException(ConsoleException::class);
-        $this->expectExceptionMessage('Name is required.');
+        $this->expectExceptionMessage('Type is required.');
         $command();
     }
 
     /**
-     * @covers CreateController::__invoke()
+     * @covers CreateClass::__invoke()
      */
-    public function test__invokeInvalidName()
+    public function test__invokeInvalidType()
     {
-        $command = new CreateController($this->filesystem);
+        $command = new CreateClass($this->filesystem);
         $this->expectException(ConsoleException::class);
-        $this->expectExceptionMessage('Name is invalid.');
-        $command('78test');
+        $this->expectExceptionMessage('Type is invalid.');
+        $command('app', 'New');
     }
 
     /**
-     * @covers CreateController::__invoke()
+     * @covers CreateClass::__invoke()
+     */
+    public function test__invokeNoName()
+    {
+        $command = new CreateClass($this->filesystem);
+        $this->expectException(ConsoleException::class);
+        $this->expectExceptionMessage('Name is required.');
+        $command('controller');
+    }
+
+    /**
+     * @covers CreateClass::__invoke()
+     */
+    public function test__invokeInvalidName()
+    {
+        $command = new CreateClass($this->filesystem);
+        $this->expectException(ConsoleException::class);
+        $this->expectExceptionMessage('Name is invalid.');
+        $command('controller', '777');
+    }
+
+    /**
+     * @covers CreateClass::__invoke()
      * @throws ConsoleException
+     * @throws \Light\Filesystem\FilesystemException
      */
     public function test__invokeFileCrated()
     {
-        $command = new CreateController($this->filesystem);
+        $command = new CreateClass($this->filesystem);
 
         $this->filesystem->expects($this->once())
             ->method('isDirectoryExists')
@@ -59,6 +82,6 @@ class CreateControllerTest extends TestCase
         $this->filesystem->expects($this->once())
             ->method('createFile');
 
-        $command('TestController');
+        $command('controller', 'TestController');
     }
 }

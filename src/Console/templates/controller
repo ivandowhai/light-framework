@@ -8,7 +8,8 @@ use Light\Http\ {
     Response\Response
 };
 
-class $name extends BaseController {
+class $name extends BaseController
+{
 
   public function handle(Request \$request): Response
   {
