@@ -2,8 +2,6 @@
 
 namespace Light\Filesystem;
 
-use Light\App;
-
 class Filesystem
 {
     /**
@@ -19,7 +17,7 @@ class Filesystem
 
     public function getPathInProject(string $path) : string
     {
-        return App::getProjectPath() . DIRECTORY_SEPARATOR . $this->clearPath($path);
+        return $this->getProjectPath() . DIRECTORY_SEPARATOR . $this->clearPath($path);
     }
 
     public function getPathInFramework(string $path) : string
@@ -53,6 +51,11 @@ class Filesystem
         file_put_contents($path, $content);
     }
 
+    public function writeToFile(string $path, string $content) : void
+    {
+        file_put_contents($path, $content, FILE_APPEND);
+    }
+
     /**
      * @param string $path
      * @return string[]
@@ -62,5 +65,10 @@ class Filesystem
         $files = scandir($this->getPathInProject($path));
         assert(is_array($files));
         return $files;
+    }
+
+    private function getProjectPath(): string
+    {
+        return $this->clearPath(__DIR__ . '/../../../../..');
     }
 }

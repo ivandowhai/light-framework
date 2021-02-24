@@ -4,15 +4,16 @@ declare(strict_types=1);
 
 namespace Light\Logger;
 
-use Light\App;
+use Light\Filesystem\Filesystem;
 use Psr\Log\LoggerInterface;
 
 class TextLogger implements LoggerInterface
 {
     public function log($level, $message, array $context = array())
     {
-        file_put_contents(
-            App::getProjectPath() . '/log/' . $level . '-' . date('Y-m-d') . '.log',
+        $filesystem = new Filesystem();
+        $filesystem->writeToFile(
+            $filesystem->getPathInProject('log/' . $level . '-' . date('Y-m-d') . '.log'),
             $message
         );
     }

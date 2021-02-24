@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace Light\Http\Response;
 
 use Light\ {
-    App,
-    Config\Config
+    Config\Config,
+    Filesystem\Filesystem
 };
 
 class HtmlResponse implements Response
@@ -20,11 +20,12 @@ class HtmlResponse implements Response
     public function __construct(
         private array $data = [],
         private ?string $template = null
-    )
-    {
+    ) {
+        $filesystem = new Filesystem();
         if (null === $this->template) {
-            $this->template = App::getProjectPath()
-                . Config::getInstance()->get('app', 'testTemplate');
+            $this->template = $filesystem->getPathInProject(
+                Config::getInstance()->get('app', 'testTemplate')
+            );
         }
     }
 
