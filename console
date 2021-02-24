@@ -23,4 +23,9 @@ foreach ($defaultCommands as $name => $class) {
 
 $commandHandler = new ConsoleHandler($registry, new DependenciesLoader());
 
-$commandHandler->run($argv);
+try {
+    $commandHandler->run($argv);
+} catch (\Exception $exception) {
+    echo $exception->getMessage();
+}
+

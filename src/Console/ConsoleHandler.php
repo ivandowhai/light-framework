@@ -21,8 +21,7 @@ class ConsoleHandler
     public function run(array $inputs) : void
     {
         if (count($inputs) < 2) {
-            print_r($this->registry->getCommands());
-            return;
+            throw new ConsoleException('Command name is required.');
         }
 
         $command = $this->registry->getCommand($inputs[1]);

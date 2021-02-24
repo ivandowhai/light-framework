@@ -47,17 +47,6 @@ class App
         }
     }
 
-    public static function getProjectPath(): string
-    {
-        // TODO: need better solution
-       return __DIR__
-        . DIRECTORY_SEPARATOR . '..'
-        . DIRECTORY_SEPARATOR . '..'
-        . DIRECTORY_SEPARATOR . '..'
-        . DIRECTORY_SEPARATOR . '..'
-        ;
-    }
-
     /**
      * @return mixed[]
      */

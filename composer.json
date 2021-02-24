@@ -15,7 +15,11 @@
     },
     "autoload": {
         "psr-4": {
-            "Light\\": "src",
+            "Light\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
             "Tests\\": "tests"
         }
     },
