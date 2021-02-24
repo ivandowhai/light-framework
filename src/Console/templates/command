@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Light\Console;
+namespace App\Commands;
 
 class $name
 {
