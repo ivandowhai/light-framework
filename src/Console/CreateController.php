@@ -4,7 +4,10 @@ declare(strict_types=1);
 
 namespace Light\Console;
 
-use Light\Filesystem\Filesystem;
+use Light\Filesystem\ {
+    Filesystem,
+    FilesystemException
+};
 
 class CreateController
 {
@@ -14,7 +17,11 @@ class CreateController
         $this->controllersDir = $this->filesystem->getPathInProject('App/Controllers');
     }
 
-    //TODO: tests
+    /**
+     * @param string[] ...$arguments
+     * @throws ConsoleException
+     * @throws FilesystemException
+     */
     public function __invoke(...$arguments) : void
     {
         if (!isset($arguments[0])) {
