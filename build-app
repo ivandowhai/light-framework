@@ -9,7 +9,15 @@ $workDir = __DIR__
 ;
 
 
-array_map(fn ($dir) => mkdir($dir), ['App', 'routes', 'config', 'templates', 'log']);
+array_map(fn ($dir) => mkdir($dir), [
+    'App',
+    'App' . DIRECTORY_SEPARATOR . 'Commands',
+    'App' . DIRECTORY_SEPARATOR . 'Controllers',
+    'routes',
+    'config',
+    'templates',
+    'log'
+]);
 
 array_map(
     fn ($file) => copy(__DIR__ . DIRECTORY_SEPARATOR . $file, $workDir . $file),
