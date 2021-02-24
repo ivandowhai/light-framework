@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Light\Config;
 
-use Light\App;
 use Light\Filesystem\Filesystem;
 
 class Config
