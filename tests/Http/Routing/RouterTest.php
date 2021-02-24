@@ -2,9 +2,12 @@
 
 namespace Test\Http\Routing;
 
-use Light\Http\Controllers\TestController;
-use Light\Http\Routing\Route;
-use Light\Http\Routing\Router;
+use Light\Http\ {
+    Controllers\TestController,
+    Routing\Route,
+    Routing\Router
+};
+
 use PHPUnit\Framework\TestCase;
 
 class RouterTest extends TestCase

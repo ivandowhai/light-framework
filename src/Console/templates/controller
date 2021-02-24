@@ -1,0 +1,17 @@
+<?php
+
+namespace App\Controllers;
+
+use Light\Http\ {
+    Controllers\BaseController,
+    Request,
+    Response\Response
+};
+
+class $name extends BaseController {
+
+  public function handle(Request \$request): Response
+  {
+
+  }
+}
