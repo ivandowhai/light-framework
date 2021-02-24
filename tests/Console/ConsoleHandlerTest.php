@@ -2,11 +2,14 @@
 
 namespace Tests\Console;
 
-use Light\Console\ConsoleException;
-use Light\Console\ConsoleHandler;
-use Light\Console\Registry;
-use Light\Console\TestCommand;
-use Light\DependenciesLoader;
+use Light\ {
+    Console\ConsoleException,
+    Console\ConsoleHandler,
+    Console\Registry,
+    Console\TestCommand,
+    DependenciesLoader
+};
+
 use PHPUnit\Framework\TestCase;
 
 class ConsoleHandlerTest extends TestCase
