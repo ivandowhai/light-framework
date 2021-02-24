@@ -4,16 +4,19 @@ declare(strict_types=1);
 
 namespace Light\Console;
 
+use Light\DependenciesLoader;
+
 class ConsoleHandler
 {
-    public function __construct(private Registry $registry)
-    {
-    }
+    public function __construct(
+        private Registry $registry,
+        private DependenciesLoader $loader
+    ) {}
 
     /**
      * @param  string[]  $inputs
      *
-     * @throws ConsoleException
+     * @throws ConsoleException|\ReflectionException
      */
     public function run(array $inputs) : void
     {
@@ -23,7 +26,8 @@ class ConsoleHandler
         }
 
         $command = $this->registry->getCommand($inputs[1]);
-        $command = new $command();
+        $dependencies = $this->loader->autoloadDependencies($command);
+        $command = new $command(...$dependencies);
 
         $arguments = count($inputs) > 2 ? array_slice($inputs, 2) : [];
 

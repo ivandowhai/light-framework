@@ -15,9 +15,10 @@ use Light\Logger\LoggerFactory;
 
 class App
 {
-    public function __construct(private Router $router)
-    {
-    }
+    public function __construct(
+        private Router $router,
+        private DependenciesLoader $loader
+    ) {}
 
     public function handleRequest(): void
     {
@@ -26,7 +27,7 @@ class App
 
             $controller = $route->getController();
 
-            $dependencies = $this->autoloadDependencies($controller);
+            $dependencies = $this->loader->autoloadDependencies($controller);
 
             $controller = new $controller(...$dependencies);
             assert($controller instanceof Controller);
@@ -66,32 +67,6 @@ class App
             fn($parameter) => addslashes($parameter),
             array_merge($_GET, $_POST)
         );
-    }
-
-    /**
-     * @param  string  $class
-     *
-     * @return object[]
-     * @throws \ReflectionException
-     */
-    private function autoloadDependencies(string $class): array
-    {
-        $reflection = new \ReflectionClass($class);
-        $dependencyObjects = [];
-        if ($reflection->hasMethod('__construct')) {
-            $parameters = $reflection->getMethod('__construct')
-                ->getParameters();
-            foreach ($parameters as $parameter) {
-                $reflectionType = $parameter->getType();
-                assert($reflectionType instanceof \ReflectionType);
-                /** @phpstan-ignore-next-line */
-                $dependencyClass = $reflectionType->getName();
-                $dependencies = $this->autoloadDependencies($dependencyClass);
-                $dependencyObjects[] = new $dependencyClass(...$dependencies);
-            }
-        }
-
-        return $dependencyObjects;
     }
 
     /**
