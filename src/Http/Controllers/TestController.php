@@ -4,8 +4,10 @@ declare(strict_types=1);
 
 namespace Light\Http\Controllers;
 
-use Light\Filesystem\Filesystem;
-use Light\Validation\Validator;
+use Light\ {
+    Filesystem\Filesystem,
+    Validation\Validator
+};
 use Light\Http\ {
     Response\HtmlResponse,
     Response\Response,

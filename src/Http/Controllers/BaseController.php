@@ -6,10 +6,9 @@ namespace Light\Http\Controllers;
 
 use Light\ {
     Http\Controller,
-    Http\Request
+    Http\Request,
+    Validation\Validator
 };
-
-use Light\Validation\Validator;
 
 abstract class BaseController implements Controller
 {

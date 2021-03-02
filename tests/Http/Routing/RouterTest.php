@@ -12,6 +12,10 @@ use PHPUnit\Framework\TestCase;
 
 class RouterTest extends TestCase
 {
+    /**
+     * @throws \Exception
+     * @covers Router::parse
+     */
     public function testParse()
     {
         $_SERVER['REQUEST_METHOD'] = 'GET';
