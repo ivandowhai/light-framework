@@ -18,6 +18,13 @@ class Route
     /** @var string[] */
     private array $parameters = [];
 
+    /**
+     * Route constructor.
+     * @param string $route
+     * @param string $controller
+     * @param string[] $methods
+     * @throws RouteException
+     */
     public function __construct(
         private string $route,
         private string $controller,
