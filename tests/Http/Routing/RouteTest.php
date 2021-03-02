@@ -20,7 +20,8 @@ class RouteTest extends TestCase
     }
 
     /**
-     * @covers Route::getMethod
+     * @covers \Light\Http\Routing\Route::getMethod
+     * @uses \Light\Http\Routing\Route::__construct
      */
     public function testGetMethod()
     {
@@ -28,7 +29,8 @@ class RouteTest extends TestCase
     }
 
     /**
-     * @covers Route::getRoute
+     * @covers \Light\Http\Routing\Route::getRoute
+     * @uses \Light\Http\Routing\Route::__construct
      */
     public function testGetRoute()
     {
@@ -36,7 +38,8 @@ class RouteTest extends TestCase
     }
 
     /**
-     * @covers Route::getController
+     * @covers \Light\Http\Routing\Route::getController
+     * @uses \Light\Http\Routing\Route::__construct
      */
     public function testGetController()
     {
@@ -47,8 +50,9 @@ class RouteTest extends TestCase
     }
 
     /**
-     * @covers Route::setParameters
-     * @covers Route::getParameters
+     * @covers \Light\Http\Routing\Route::setParameters
+     * @covers \Light\Http\Routing\Route::getParameters
+     * @uses \Light\Http\Routing\Route::__construct
      */
     public function testSetAndGetParameters()
     {
