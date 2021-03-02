@@ -30,6 +30,11 @@ class ConsoleHandlerTest extends TestCase
         $this->handler = new ConsoleHandler($this->registry, $this->dependenciesLoader);
     }
 
+    /**
+     * @throws ConsoleException
+     * @throws \ReflectionException
+     * @covers ConsoleHandler::run
+     */
     public function testRunFailed()
     {
         $this->registry->expects($this->never())
@@ -43,6 +48,11 @@ class ConsoleHandlerTest extends TestCase
         $this->handler->run(['console']);
     }
 
+    /**
+     * @throws ConsoleException
+     * @throws \ReflectionException
+     * @covers ConsoleHandler::run
+     */
     public function testRunSuccess()
     {
         $this->registry->expects($this->once())

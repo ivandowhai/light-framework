@@ -19,16 +19,25 @@ class RouteTest extends TestCase
         );
     }
 
+    /**
+     * @covers Route::getMethod
+     */
     public function testGetMethod()
     {
         $this->assertEquals('POST', self::$route->getMethod());
     }
 
+    /**
+     * @covers Route::getRoute
+     */
     public function testGetRoute()
     {
         $this->assertEquals('test', self::$route->getRoute());
     }
 
+    /**
+     * @covers Route::getController
+     */
     public function testGetController()
     {
         $this->assertEquals(
@@ -37,6 +46,10 @@ class RouteTest extends TestCase
         );
     }
 
+    /**
+     * @covers Route::setParameters
+     * @covers Route::getParameters
+     */
     public function testSetAndGetParameters()
     {
         self::$route->setParameters(['testParameter' => 'testValue']);
