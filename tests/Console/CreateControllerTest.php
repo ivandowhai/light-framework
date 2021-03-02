@@ -20,7 +20,8 @@ class CreateControllerTest extends TestCase
     }
 
     /**
-     * @covers CreateClass::__invoke()
+     * @covers \Light\Console\CreateClass::__invoke()
+     * @uses \Light\Console\CreateClass::__construct()
      */
     public function test__invokeNoArguments()
     {
@@ -31,7 +32,8 @@ class CreateControllerTest extends TestCase
     }
 
     /**
-     * @covers CreateClass::__invoke()
+     * @covers \Light\Console\CreateClass::__invoke()
+     * @uses \Light\Console\CreateClass::__construct()
      */
     public function test__invokeInvalidType()
     {
@@ -42,7 +44,8 @@ class CreateControllerTest extends TestCase
     }
 
     /**
-     * @covers CreateClass::__invoke()
+     * @covers \Light\Console\CreateClass::__invoke()
+     * @uses \Light\Console\CreateClass::__construct()
      */
     public function test__invokeNoName()
     {
@@ -53,7 +56,8 @@ class CreateControllerTest extends TestCase
     }
 
     /**
-     * @covers CreateClass::__invoke()
+     * @covers \Light\Console\CreateClass::__invoke()
+     * @uses \Light\Console\CreateClass::__construct()
      */
     public function test__invokeInvalidName()
     {
@@ -64,7 +68,8 @@ class CreateControllerTest extends TestCase
     }
 
     /**
-     * @covers CreateClass::__invoke()
+     * @covers \Light\Console\CreateClass::__invoke()
+     * @uses \Light\Console\CreateClass::__construct()
      * @throws ConsoleException
      * @throws \Light\Filesystem\FilesystemException
      */

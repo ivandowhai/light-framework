@@ -14,7 +14,9 @@ class RouterTest extends TestCase
 {
     /**
      * @throws \Exception
-     * @covers Router::parse
+     * @covers \Light\Http\Routing\Router::parse()
+     * @uses \Light\Http\Routing\Router
+     * @uses \Light\Http\Routing\Route
      */
     public function testParse()
     {

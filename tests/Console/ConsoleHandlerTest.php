@@ -33,7 +33,8 @@ class ConsoleHandlerTest extends TestCase
     /**
      * @throws ConsoleException
      * @throws \ReflectionException
-     * @covers ConsoleHandler::run
+     * @covers \Light\Console\ConsoleHandler::run
+     * @uses \Light\Console\ConsoleHandler::__construct
      */
     public function testRunFailed()
     {
@@ -51,7 +52,9 @@ class ConsoleHandlerTest extends TestCase
     /**
      * @throws ConsoleException
      * @throws \ReflectionException
-     * @covers ConsoleHandler::run
+     * @covers \Light\Console\ConsoleHandler::run
+     * @uses \Light\Console\ConsoleHandler::__construct
+     * @uses \Light\Console\TestCommand::__invoke
      */
     public function testRunSuccess()
     {

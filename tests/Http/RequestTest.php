@@ -19,7 +19,8 @@ class RequestTest extends TestCase
     }
 
     /**
-     * @covers Request::hasField
+     * @covers \Light\Http\Request::hasField
+     * @uses \Light\Http\Request::__construct
      */
     public function testHasField()
     {
@@ -28,7 +29,8 @@ class RequestTest extends TestCase
     }
 
     /**
-     * @covers Request::hasParameter
+     * @covers \Light\Http\Request::hasParameter
+     * @uses \Light\Http\Request::__construct
      */
     public function testHasParameter()
     {
@@ -37,7 +39,8 @@ class RequestTest extends TestCase
     }
 
     /**
-     * @covers Request::getField
+     * @covers \Light\Http\Request::getField
+     * @uses \Light\Http\Request::__construct
      */
     public function testGetField()
     {
@@ -45,7 +48,8 @@ class RequestTest extends TestCase
     }
 
     /**
-     * @covers Request::getData
+     * @covers \Light\Http\Request::getData
+     * @uses \Light\Http\Request::__construct
      */
     public function testGetData()
     {
@@ -53,7 +57,8 @@ class RequestTest extends TestCase
     }
 
     /**
-     * @covers Request::getParameters
+     * @covers \Light\Http\Request::getParameters
+     * @uses \Light\Http\Request::__construct
      */
     public function testGetParameters()
     {
@@ -61,7 +66,8 @@ class RequestTest extends TestCase
     }
 
     /**
-     * @covers Request::getParameter
+     * @covers \Light\Http\Request::getParameter
+     * @uses \Light\Http\Request::__construct
      */
     public function testGetParameter()
     {
