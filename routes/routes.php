@@ -6,6 +6,6 @@ return [
     new Route(
         '',
         Light\Http\Controllers\TestController::class,
-        Route::GET
+        [Route::GET]
     )
 ];

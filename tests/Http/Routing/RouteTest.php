@@ -15,17 +15,17 @@ class RouteTest extends TestCase
         self::$route = new Route(
             'test',
             \Light\Http\Controllers\TestController::class,
-            'POST'
+            ['POST']
         );
     }
 
     /**
-     * @covers \Light\Http\Routing\Route::getMethod
+     * @covers \Light\Http\Routing\Route::getMethods
      * @uses \Light\Http\Routing\Route::__construct
      */
     public function testGetMethod()
     {
-        $this->assertEquals('POST', self::$route->getMethod());
+        $this->assertEquals(['POST'], self::$route->getMethods());
     }
 
     /**

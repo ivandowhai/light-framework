@@ -13,17 +13,21 @@ class Route
     public const PUT = 'PUT';
     public const DELETE = 'DELETE';
 
+    const METHODS_AVAILABLE = [self::GET, self::POST, self::PUT, self::DELETE];
+
     /** @var string[] */
     private array $parameters = [];
 
     public function __construct(
         private string $route,
         private string $controller,
-        private string $method = self::GET
+        private array $methods = [self::GET]
     )
     {
-        if (!in_array($this->method, [self::GET, self::POST, self::PUT, self::DELETE])) {
-            throw new RouteException('Wrong method.', 500);
+        foreach ($this->methods as $method) {
+            if (!in_array($method, self::METHODS_AVAILABLE)) {
+                throw new RouteException('Wrong method.', 500);
+            }
         }
     }
 
@@ -53,8 +57,11 @@ class Route
         $this->parameters = $parameters;
     }
 
-    public function getMethod(): string
+    /**
+     * @return string[]
+     */
+    public function getMethods(): array
     {
-        return $this->method;
+        return $this->methods;
     }
 }
