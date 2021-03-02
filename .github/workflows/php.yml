@@ -19,4 +19,4 @@ jobs:
     - name: phpstan
       run: vendor/bin/phpstan analyse src -l 6
     - name: PHPUnit
-      run: php vendor/bin/phpunit tests
+      run: php vendor/bin/phpunit tests --coverage-clover coverage.xml
