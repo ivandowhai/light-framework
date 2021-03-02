@@ -70,7 +70,7 @@ class Router
                 continue;
             }
 
-            if ($route->getMethod() !== $method) {
+            if (!in_array($method, $route->getMethods())) {
                 continue;
             }
 

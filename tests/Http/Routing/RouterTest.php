@@ -26,7 +26,7 @@ class RouterTest extends TestCase
         $router = new Router([new Route(
             'test',
             TestController::class,
-            'GET'
+            ['GET']
         )]);
 
         $this->assertInstanceOf(Route::class, $router->parse());
