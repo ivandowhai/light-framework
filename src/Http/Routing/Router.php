@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace Light\Http\Routing;
 
-use Light\Config\Config;
-
 class Router
 {
     /**
