@@ -4,7 +4,10 @@ declare(strict_types=1);
 
 namespace Light\Http\Routing;
 
-use Light\{App, Config\Config, Filesystem\Filesystem};
+use Light\ {
+    Config\Config,
+    Filesystem\Filesystem
+};
 
 class RouterFactory
 {
