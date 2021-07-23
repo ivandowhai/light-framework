@@ -16,11 +16,7 @@ class CreateClass
         'command' => 'App/Commands'
     ];
 
-    private string $controllersDir;
-
-    public function __construct(private Filesystem $filesystem) {
-        $this->controllersDir = $this->filesystem->getPathInProject('App/Controllers');
-    }
+    public function __construct(private Filesystem $filesystem) {}
 
     /**
      * @param string ...$arguments

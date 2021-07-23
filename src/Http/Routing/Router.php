@@ -11,9 +11,7 @@ class Router
      *
      * @param  Route[]  $routes
      */
-    public function __construct(private array $routes)
-    {
-    }
+    public function __construct(private array $routes) {}
 
     public function parse() : Route
     {
